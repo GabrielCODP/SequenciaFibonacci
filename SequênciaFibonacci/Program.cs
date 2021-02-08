@@ -17,6 +17,31 @@ namespace SequênciaFibonacci
             return (tamanho <= 1) ? tamanho : fibonacciOperadorTernario(tamanho - 1) + fibonacciOperadorTernario(tamanho - 2);
         }
 
+        static int fibonacciFor(int tamanho) //0+1+1+2+3+5
+        {
+            int valorAtual=0, ultimoValor=0;
+            //ValorAtual = 8, ultimoValor=3
+            //6
+
+            for (int i = 1; i <= tamanho; i++) //O vetor vai pecorrer,o tamanho, assim da o ultimo valor.
+            {
+                if (i == 1) 
+                {
+                    valorAtual = 1;
+                    ultimoValor = 0;
+                }
+
+                else 
+                {
+                    valorAtual += ultimoValor; //Vai somar o ValorAtual, com o ultimo (que está atras dele) tipo 2+3+5=8
+                    ultimoValor = valorAtual - ultimoValor; //8-3=5...
+                }
+
+            }
+
+            return valorAtual;
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine(":::::::::::::::: Sequência de Fibonacci - Utilizando método recursivo::::::::::::::::");
@@ -35,7 +60,6 @@ namespace SequênciaFibonacci
                 //}
 
                 Console.Write((tamanho - 1 > i) ? $"{fibonacciRecursivo(i)} + " : $"{fibonacciRecursivo(i)}");
-
             }
 
             Console.WriteLine("\n::::::::::::::::Sequência de Fibonacci - Operador Ternário::::::::::::::::");
@@ -44,6 +68,9 @@ namespace SequênciaFibonacci
                 Console.Write((tamanho - 1 > i) ? $"{fibonacciOperadorTernario(i)} + " : $"{fibonacciOperadorTernario(i)}");
 
             Console.WriteLine("\n::::::::::::::::Sequência de Fibonacci - Utilizando For::::::::::::::::");
+            for (int i = 0; i < tamanho; i++)
+                Console.Write((tamanho - 1 > i) ? $"{fibonacciFor(i)} + " : $"{fibonacciFor(i)}");
+
 
 
 
